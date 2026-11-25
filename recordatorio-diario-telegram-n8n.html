@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recordatorio diario en el celular con n8n y Telegram (gratis y sin programar) | Javi Automates</title>
+<meta name="description" content="Armá un flujo de 3 nodos en n8n que todos los días a las 8 te manda por Telegram lo que no te podés olvidar. Paso a paso para principiantes, sin código.">
+<link rel="canonical" href="https://javierravel.github.io/tareas-ia/recordatorio-diario-telegram-n8n.html">
+<meta property="og:title" content="Recordatorio diario en el celular con n8n y Telegram (gratis y sin programar) | Javi Automates">
+<meta property="og:description" content="Armá un flujo de 3 nodos en n8n que todos los días a las 8 te manda por Telegram lo que no te podés olvidar. Paso a paso para principiantes, sin código.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://javierravel.github.io/tareas-ia/recordatorio-diario-telegram-n8n.html">
+<style>
+:root{--bg:#0f1420;--card:#171e2e;--ink:#e9edf5;--muted:#9aa6bd;--amber:#f5b82e;--green:#3ddc97;--line:#26304a}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif}
+a{color:var(--amber)}a:hover{text-decoration:none}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+header{border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-weight:800;color:var(--ink);text-decoration:none;font-size:20px}.logo span{color:var(--amber)}
+nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-size:16px}nav a:hover{color:var(--ink)}
+h1{font-size:clamp(28px,5vw,40px);line-height:1.2;margin:36px 0 12px}
+h2{font-size:24px;margin:40px 0 10px}
+.lead{color:var(--muted);font-size:19px;margin:0 0 24px}
+.tag{display:inline-block;background:#26304a;color:var(--amber);font-weight:700;font-size:14px;padding:4px 10px;border-radius:99px;margin-top:28px}
+li{margin:6px 0}code{background:#222b40;padding:2px 6px;border-radius:6px;font-size:.9em}
+.cta{background:linear-gradient(135deg,#1d2640,#20203a);border:1px solid #3a4466;border-radius:16px;padding:22px 24px;margin:28px 0}
+.cta b{display:block;font-size:20px;margin-bottom:4px}.cta p{margin:0 0 14px;color:var(--muted)}
+.btn{display:inline-block;background:var(--amber);color:#1a1300;font-weight:800;padding:12px 20px;border-radius:12px;text-decoration:none}
+.btn:hover{filter:brightness(1.08)}
+.prompt{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:12px;padding:18px 20px;margin:24px 0}
+.prompt .h{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.prompt .h b{color:var(--amber)}.prompt p{margin:0;font-family:ui-monospace,Menlo,monospace;font-size:16px;line-height:1.6}
+.copy{background:#26304a;color:var(--ink);border:0;border-radius:8px;padding:6px 12px;font-weight:700;cursor:pointer;font-size:14px}
+.video{position:relative;width:100%;max-width:340px;aspect-ratio:9/16;margin:24px auto;border-radius:16px;overflow:hidden;background:#000}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:10px 0}
+.faq summary{font-weight:700;cursor:pointer}.faq p{margin:10px 0 0;color:var(--muted)}
+.nextprev{display:flex;gap:12px;justify-content:space-between;margin:40px 0;flex-wrap:wrap}
+.nextprev a{flex:1;min-width:220px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;text-decoration:none;color:var(--ink)}
+.nextprev small{display:block;color:var(--muted)}
+.cards{display:grid;gap:14px;margin:28px 0}
+.card{display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;text-decoration:none;color:var(--ink)}
+.card:hover{border-color:var(--amber)}.card small{color:var(--amber);font-weight:700}.card h3{margin:4px 0;font-size:20px}.card p{margin:0;color:var(--muted);font-size:16px}
+footer{border-top:1px solid var(--line);margin-top:60px;padding:28px 0;color:var(--muted);font-size:15px}
+footer a{color:var(--muted)}
+.autor{display:flex;gap:14px;align-items:center;background:var(--card);border-radius:14px;padding:16px 18px;margin:36px 0;color:var(--muted);font-size:16px}
+.autor b{color:var(--ink)}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Article", "headline": "Recordatorio diario en el celular con n8n y Telegram (gratis y sin programar)", "description": "Armá un flujo de 3 nodos en n8n que todos los días a las 8 te manda por Telegram lo que no te podés olvidar. Paso a paso para principiantes, sin código.", "inLanguage": "es", "author": {"@type": "Person", "name": "Javier Ravel", "url": "https://www.youtube.com/@javiautomates"}, "datePublished": "2026-11-25", "mainEntityOfPage": "https://javierravel.github.io/tareas-ia/recordatorio-diario-telegram-n8n.html"}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿n8n es gratis?", "acceptedAnswer": {"@type": "Answer", "text": "La versión que se instala en tu computadora o en tu servidor es gratis. La versión en la nube tiene prueba gratis y después es paga."}}, {"@type": "Question", "name": "¿Puedo usar WhatsApp en vez de Telegram?", "acceptedAnswer": {"@type": "Answer", "text": "Se puede, pero WhatsApp pide una cuenta de empresa y aprobaciones. Telegram es gratis, se arma en un minuto y no pide nada."}}]}]}</script>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="index.html">Javi <span>Automates</span></a>
+<nav><a href="index.html">Tareas</a><a href="sobre.html">Sobre mí</a><a href="https://javiautomates.gumroad.com/l/guia-gratis">Guía gratis</a></nav></div></header>
+<main class="wrap">
+<span class="tag">Tarea de oficina #4</span>
+<h1>Recordatorio diario en el celular con n8n y Telegram (gratis y sin programar)</h1>
+<p class="lead">Armá un flujo de 3 nodos en n8n que todos los días a las 8 te manda por Telegram lo que no te podés olvidar. Paso a paso para principiantes, sin código.</p>
+<div class="cta"><b>🎁 Guía gratis: 10 tareas de oficina que la IA te hace sola</b>
+<p>Esta es una de las tareas. Las otras 9, con su prompt y el truco de cada una, en un PDF gratis.</p>
+<a class="btn" href="https://javiautomates.gumroad.com/l/guia-gratis">Quiero la guía gratis</a></div>
+
+<p>Todos los días a las ocho, un mensaje en tu celular con lo que no te podés olvidar: tomar la pastilla, mandar el reporte, regar las plantas. Lo armás una vez con <strong>n8n</strong> y un bot de Telegram, y corre solo.</p>
+
+<h2>Qué necesitás</h2>
+<ul>
+<li><strong>n8n</strong>: es gratis si lo instalás en tu computadora. También hay versión en la nube, que es paga después del período de prueba.</li>
+<li><strong>Telegram</strong> en el celular.</li>
+<li>10 minutos.</li>
+</ul>
+
+<h2>Paso 1: creá tu bot de Telegram</h2>
+<ol>
+<li>En Telegram buscá <strong>@BotFather</strong> (tiene tilde azul) y escribile <code>/newbot</code>.</li>
+<li>Elegí un nombre y un usuario que termine en "bot". BotFather te da un <strong>token</strong>: es una contraseña, no la compartas.</li>
+<li>Abrí tu bot nuevo y tocá <strong>Iniciar</strong>. Sin este paso no te puede escribir.</li>
+<li>Buscá <strong>@userinfobot</strong>, escribile cualquier cosa y anotá tu <strong>Id</strong>: es tu Chat ID.</li>
+</ol>
+
+<h2>Paso 2: el flujo de 3 nodos</h2>
+<ol>
+<li><strong>Schedule Trigger</strong>: todos los días, a las 8:00.</li>
+<li><strong>Telegram → Send a text message</strong>: en la credencial pegás el token; en Chat ID, tu número; en Text, tu recordatorio.</li>
+<li>En Additional Fields, apagá <strong>Append n8n Attribution</strong> para que no aparezca la firma de n8n.</li>
+</ol>
+<p>Probalo con <strong>Execute workflow</strong>: el mensaje te llega en segundos. Después tocá <strong>Publish</strong>. Si no lo publicás, no corre solo: es el error más común.</p>
+
+<h2>Errores comunes</h2>
+<ul>
+<li><strong>"chat not found" o "Forbidden"</strong>: no tocaste Iniciar en tu bot, o el Chat ID tiene un número de más o de menos.</li>
+<li><strong>Se queda esperando y da error de conexión</strong>: algunas redes de oficina o de universidad bloquean Telegram. Probá desde otra red.</li>
+<li><strong>No llega a la mañana siguiente</strong>: n8n tiene que estar prendido a esa hora. Si lo tenés en tu compu, la compu también.</li>
+</ul>
+
+<h2>Para ir más lejos</h2>
+<p>Este flujo es el esqueleto de casi cualquier automatización: <strong>disparador, datos, acción</strong>. Agregá en el medio un nodo que busque datos (el clima, tus tareas del día, un precio) y el mensaje se arma solo. Lo explico completo en el <a href="https://www.youtube.com/watch?v=lAOP_nrNvY4">curso gratis de n8n desde cero</a>.</p>
+
+<h2>Miralo en 25 segundos</h2>
+<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/CAUNrU-WNZM" title="Mensaje diario con n8n + Telegram" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
+<h2>Preguntas frecuentes</h2>
+<div class="faq"><details><summary>¿n8n es gratis?</summary><p>La versión que se instala en tu computadora o en tu servidor es gratis. La versión en la nube tiene prueba gratis y después es paga.</p></details><details><summary>¿Puedo usar WhatsApp en vez de Telegram?</summary><p>Se puede, pero WhatsApp pide una cuenta de empresa y aprobaciones. Telegram es gratis, se arma en un minuto y no pide nada.</p></details></div>
+<div class="cta"><b>¿Te sirvió? Hay 9 tareas más.</b>
+<p>Bajate la guía gratis: 8 tareas con Claude y 2 automatizaciones con n8n, cada una con su prompt listo para copiar.</p>
+<a class="btn" href="https://javiautomates.gumroad.com/l/guia-gratis">Descargar la guía gratis</a></div>
+<div class="autor"><div>✍️</div><div><b>Javier Ravel</b> — trabajo en IT en una universidad y uso IA todos los días para ahorrarme tareas repetitivas. En <a href="https://www.youtube.com/@javiautomates">Javi Automates</a> muestro cómo, sin programar.</div></div>
+<div class="nextprev"><a href="manual-de-procedimientos-con-ia.html"><small>← Tarea #3</small>Manual de la tarea que solo vos sabés</a><a href="formulario-que-llena-una-tabla-n8n.html" style="text-align:right"><small>Tarea #5 →</small>Formulario que llena la planilla</a></div>
+</main>
+<footer><div class="wrap">
+<p>Javi Automates · IA sin código que te ahorra horas en la oficina.</p>
+<p><a href="https://www.youtube.com/@javiautomates">YouTube</a> · <a href="https://javiautomates.gumroad.com/l/guia-gratis">Guía gratis</a> · <a href="sobre.html">Sobre mí</a> · <a href="privacidad.html">Privacidad</a></p>
+</div></footer>
+<script>document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',()=>{const t=b.closest('.prompt').querySelector('p').innerText;navigator.clipboard.writeText(t).then(()=>{b.textContent='¡Copiado!';setTimeout(()=>b.textContent='Copiar',1500)})}))</script>
+</body>
+</html>
