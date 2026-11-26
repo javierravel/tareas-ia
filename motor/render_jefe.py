@@ -712,8 +712,85 @@ def p8s3(im, d, t):
 P8_PROMPT = ("Te paso mi planilla de ventas (Excel). Armá un gráfico de barras de ventas por mes, marcá el mejor mes "
              "y decime en una frase qué conclusión tengo que contar en la reunión.")
 
+# ---------- Parte 9: presupuesto desde la lista de precios (27/11) ----------
+PRICES9 = [("Silla de oficina", "45.000"), ("Escritorio 120 cm", "98.000"), ("Lámpara LED", "12.500"), ("Archivero 3 cajones", "63.000"),
+           ("Pizarra blanca", "21.000"), ("Perchero", "15.800"), ("Mesa de reunión", "210.000"), ("Biblioteca", "74.000"),
+           ("Silla fija", "28.500"), ("Cesto", "4.200"), ("Alfombra", "36.000"), ("Cajonera", "52.000")]
+QUOTE9 = [("Silla de oficina", 6, 45000), ("Escritorio 120 cm", 3, 98000), ("Lámpara LED", 6, 12500), ("Archivero 3 cajones", 2, 63000)]
+
+
+def _m(v):
+    return "$ " + f"{v:,}".replace(",", ".")
+
+
+def p9s1(im, d, t):
+    n = int(min(40, 3 + t * 14))
+    d.rounded_rectangle((200, 330, 880, 440), 40, fill=RED)
+    ctext(d, 345, f"{n} PRODUCTOS", font("Black", 60), WHITE, 200, 880)
+    x0, y0, rh = 90, 480, 56
+    widths = [80, 520, 300]
+    heads = ["#", "Producto", "Precio"]
+    off = int(t * 2.2)
+    x = x0
+    for w, h in zip(widths, heads):
+        d.rectangle((x, y0, x + w, y0 + rh), fill=(225, 230, 238), outline=(200, 205, 215))
+        ctext(d, y0 + 11, h, font("ExtraBold", 32), (40, 50, 70), x, x + w)
+        x += w
+    for i in range(10):
+        k = (i + off) % len(PRICES9)
+        yy = y0 + (i + 1) * rh
+        vals = [str(i + off + 1), PRICES9[k][0], "$ " + PRICES9[k][1]]
+        x = x0
+        for j, (w, v) in enumerate(zip(widths, vals)):
+            d.rectangle((x, yy, x + w, yy + rh), fill=(255, 255, 255), outline=(215, 220, 228))
+            if j == 1:
+                d.text((x + 24, yy + 11), v, font=font("Medium", 32), fill=(40, 50, 70))
+            else:
+                ctext(d, yy + 11, v, font("Medium", 32), (40, 50, 70), x, x + w)
+            x += w
+    d.rounded_rectangle((290, 1150, 790, 1250), 30, fill=AMBER)
+    ctext(d, 1168, "Para mañana", font("Black", 50), BG, 290, 790)
+    stamp(d, t)
+
+
+def p9s3(im, d, t):
+    d.text((90, 330), "Presupuesto", font=font("Black", 60), fill=WHITE)
+    card(d, (60, 430, 1020, 1120), fill=(255, 255, 255), outline=(200, 205, 215), r=24)
+    cols = [("Producto", 90, 480), ("Cant.", 480, 590), ("Precio", 590, 790), ("Subtotal", 790, 1000)]
+    for name, a, b in cols:
+        ctext(d, 460, name, font("ExtraBold", 32), (90, 100, 120), a, b) if name != "Producto" else d.text((a, 460), name, font=font("ExtraBold", 32), fill=(90, 100, 120))
+    d.line((80, 515, 1000, 515), fill=(210, 215, 225), width=3)
+    total = 0
+    for i, (prod, q, pr) in enumerate(QUOTE9):
+        p = prog(t, 0.15 + i * DURS[2] * 0.08, 0.3)
+        if p <= 0:
+            continue
+        yy = 545 + i * 105
+        c = mix((40, 50, 70), p)
+        for ln_i, ln in enumerate(wrap(d, prod, font("Bold", 34), 380)):
+            d.text((90, yy + ln_i * 42), ln, font=font("Bold", 34), fill=c)
+        ctext(d, yy, str(q), font("Medium", 34), c, 480, 590)
+        ctext(d, yy, _m(pr), font("Medium", 32), c, 590, 790)
+        ctext(d, yy, _m(q * pr), font("Bold", 32), c, 790, 1000)
+        total += q * pr
+    pt = prog(t, 0.15 + 4 * DURS[2] * 0.08, 0.3)
+    if pt > 0:
+        d.rounded_rectangle((520, 990, 1000, 1090), 20, fill=mix((34, 197, 94), pt))
+        ctext(d, 1012, "TOTAL " + _m(sum(q * p_ for _, q, p_ in QUOTE9)), font("Black", 44), mix(WHITE, pt), 520, 1000)
+    pc = prog(t, DURS[2] * 0.62, 0.3)
+    if pc > 0:
+        card(d, (60, 1160, 1020, 1380), fill=mix(CARD, pc), outline=mix(AMBER, pc), r=22, width=3)
+        d.text((100, 1185), "A confirmar:", font=font("ExtraBold", 38), fill=mix(AMBER, pc))
+        d.text((100, 1245), "Monitor 27\" (no está en la lista)", font=font("Bold", 40), fill=mix(WHITE, pc))
+        d.text((100, 1305), "Revisá las cuentas en tu planilla", font=font("Medium", 34), fill=mix(MUTED, pc))
+
+
+P9_PROMPT = ("Te paso mi lista de precios y el pedido del cliente. Armá el presupuesto con producto, cantidad, precio y subtotal, "
+             "y el total. Usá solo lo que está en la lista: si algo no está, no inventes, ponelo aparte en 'a confirmar'.")
+
 
 PARTS = {
+    9: [p9s1, chat_scene("Le pasás la lista", "Armame el presupuesto con este pedido: 6 sillas, 3 escritorios, 6 lámparas, 2 archiveros y un monitor.", "Adjunto: precios.xlsx"), p9s3, prompt_scene(P9_PROMPT), s5],
     "sueldos": [v1, v2, v3, v4, v5],
     8: [p8s1, chat_scene("Le pasás el Excel", "Armame un gráfico de ventas por mes para la reunión.", "Adjunto: ventas.xlsx"), p8s3, prompt_scene(P8_PROMPT), s5],
     1: [s1, s2, s3, s4, s5],
