@@ -525,7 +525,7 @@ ARTICULOS = [
 "titulo": "Tareas programadas con IA: mis 3 «empleados» de 200 dólares por mes",
 "corto": "Tareas programadas con IA",
 "desc": "Pago 200 dólares por mes de IA y lo anoto como sueldos: tres tareas programadas que trabajan solas a las 03:47, 07:41 y 23:13. Cómo armar la tuya, sin programar.",
-"video": None,
+"video": "6xzHuoeCBUM",
 "fecha": "2026-11-26",
 "cuerpo": """
 <p>Pago 200 dólares por mes de inteligencia artificial. En mis cuentas no lo anoto como software: lo anoto como sueldos. Porque no es una app que abro cuando me acuerdo, son tareas que corren solas a una hora fija, todos los días, y me dejan el trabajo hecho para que yo solo lo revise.</p>
@@ -789,6 +789,50 @@ ARTICULOS = [
 "faq": [
 ("¿Puede leer la lista de precios en PDF?", "Sí, si el PDF tiene el texto (no es una foto). Si es una lista muy larga, pegale solo la parte de los productos del pedido para que no se mezcle."),
 ("¿Me lo deja con mi logo?", "El chat te da el texto y la tabla. Para el logo y el formato, pegalo en tu plantilla de siempre de Word, Google Docs o Excel."),
+],
+},
+{
+"slug": "grafico-desde-excel-con-ia",
+"num": 19,
+"titulo": "Cómo hacer un gráfico desde tu Excel con IA (para la reunión, en minutos)",
+"corto": "Gráfico desde el Excel para la reunión",
+"desc": "Pasale tu planilla de ventas a la IA y te arma el gráfico de ventas por mes, con el mejor mes marcado y la frase para la diapositiva. Con cómo chequear que los números estén bien.",
+"video": "5-OjPDoiyfE",
+"fecha": "2026-11-27",
+"cuerpo": """
+<p>Tenés una planilla con 300 filas de ventas y tu jefe quiere "un gráfico para la reunión". Armar la tabla dinámica, elegir el tipo de gráfico y pensar qué decir lleva un rato. La IA lo hace en un par de minutos, y vos solo revisás.</p>
+
+<h2>Qué vas a tener al final</h2>
+<ul>
+<li>Las ventas sumadas por mes (o por vendedor, o por producto: lo que pidas).</li>
+<li>Un gráfico de barras con el mejor mes marcado.</li>
+<li>Una frase con la conclusión, lista para poner en la diapositiva.</li>
+</ul>
+
+<h2>Paso a paso</h2>
+<ol>
+<li>Subí el archivo de Excel (o el CSV) a Claude. Si la planilla tiene datos sensibles, borrá antes las columnas que no hacen falta (nombres de clientes, por ejemplo).</li>
+<li>Usá el prompt de abajo. Si querés otro corte, cambiá "por mes" por "por vendedor" o "por producto".</li>
+<li>Descargá el gráfico como imagen o pedile la tabla resumida para armar el gráfico en tu Excel o en tus diapositivas.</li>
+<li>Chequeá un total a mano antes de presentarlo (ver abajo).</li>
+</ol>
+
+{prompt}
+
+<h2>El truco: pedile la conclusión, no solo el dibujo</h2>
+<p>Un gráfico solo no dice nada en una reunión. Si le pedís también "qué tengo que contar", te devuelve la frase (por ejemplo, cuál fue el mejor mes y cuánto creció contra el primero) y llegás con el mensaje armado.</p>
+
+<h2>Errores comunes</h2>
+<ul>
+<li><b>Presentar sin chequear.</b> Elegí un mes y sumalo vos en Excel con =SUMA o un filtro: si coincide con lo que dice la IA, vas tranquilo.</li>
+<li><b>Fechas mal leídas.</b> Si tu planilla usa día/mes y la IA lo toma como mes/día, los meses salen cambiados. Decile el formato de fecha en el prompt.</li>
+<li><b>Filas de totales dentro de los datos.</b> Si la planilla ya tiene una fila de "Total", sacala o avisale: si no, la suma sale duplicada.</li>
+</ul>
+""",
+"prompt": "Te paso mi planilla de ventas (Excel). Las fechas están en formato [día/mes/año]. Armá un gráfico de barras de ventas por mes, marcá el mejor mes y decime en una frase qué conclusión tengo que contar en la reunión. Mostrame también la tabla con el total de cada mes para que pueda chequearla.",
+"faq": [
+("¿Necesito saber hacer tablas dinámicas?", "No. Le subís el archivo y le pedís el resumen en castellano. Si después querés el gráfico dentro de tu Excel, pedile la tabla resumida y la pegás."),
+("¿Sirve con Google Sheets?", "Sí: descargá la hoja como Excel o CSV (Archivo → Descargar) y subí ese archivo."),
 ],
 },
 ]
