@@ -750,7 +750,7 @@ ARTICULOS = [
 "titulo": "Cómo armar un presupuesto desde una lista de precios con IA",
 "corto": "Presupuesto desde una lista de precios",
 "desc": "Pegale a la IA tu lista de precios y el pedido del cliente: te arma el presupuesto con cantidades, subtotales y condiciones, listo para mandar. Con cómo chequear las cuentas.",
-"video": "RiNdm6Krzr0",
+"video": "0BUKGR9WPy8",
 "fecha": "2026-11-26",
 "cuerpo": """
 <p>Un cliente te pide "pasame precio por esto, esto y aquello" y vos tenés la lista de precios en una planilla de 300 renglones. Buscar cada producto, multiplicar y armar el documento lleva media hora. La IA lo arma en dos minutos, y vos solo revisás.</p>
