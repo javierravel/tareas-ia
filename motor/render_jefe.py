@@ -937,8 +937,84 @@ def p10s3(im, d, t):
 P10_PROMPT = ("Resumí este PDF en una carilla para [quién lo lee], que tiene que decidir [qué]. Incluí las fechas, "
               "los números clave y lo que me toca hacer. Al lado de cada dato poné la página. Si algo no está, no lo inventes.")
 
+# ---------- Parte 11: planilla de gastos desde fotos de tickets ----------
+TICKETS11 = [("Café Roma", "$ 4.800"), ("Taxi", "$ 9.200"), ("Librería Sur", "$ 3.150"), ("Estac.", "$ 2.500"),
+             ("Almuerzo", "$ 12.400"), ("Farmacia", "$ 5.300"), ("Peaje", "$ 1.900"), ("Kiosco", "$ 1.700")]
+
+
+def p11s1(im, d, t):
+    n = int(min(23, 2 + t * 8))
+    d.rounded_rectangle((230, 330, 850, 440), 40, fill=RED)
+    ctext(d, 345, f"{n} TICKETS", font("Black", 60), WHITE, 230, 850)
+    k = min(len(TICKETS11), int(t * 3) + 1)
+    pos = [(110, 490, -6), (560, 470, 5), (300, 560, 3), (640, 620, -4), (130, 720, 4), (470, 740, -3), (250, 830, -5), (620, 860, 6)]
+    for i in range(k):
+        name, amt = TICKETS11[i]
+        x0, y0, rot = pos[i]
+        tk = Image.new("RGBA", (330, 420), (0, 0, 0, 0))
+        td = ImageDraw.Draw(tk)
+        td.rectangle((10, 10, 320, 410), fill=(252, 250, 240), outline=(205, 200, 185), width=3)
+        for zx in range(10, 320, 20):
+            td.polygon([(zx, 410), (zx + 10, 398), (zx + 20, 410)], fill=(0, 0, 0, 0))
+        tw = td.textlength(name, font=font("Black", 34))
+        td.text(((330 - tw) / 2, 40), name, font=font("Black", 34), fill=(40, 40, 40))
+        for j in range(5):
+            w = 230 if j % 2 else 180
+            td.rounded_rectangle((50, 110 + j * 40, 50 + w, 124 + j * 40), 6, fill=(215, 212, 200))
+        td.line((40, 320, 290, 320), fill=(160, 160, 150), width=2)
+        td.text((50, 335), "TOTAL", font=font("Bold", 30), fill=(60, 60, 60))
+        aw = td.textlength(amt, font=font("Black", 32))
+        td.text((285 - aw, 333), amt, font=font("Black", 32), fill=(30, 30, 30))
+        tk = tk.rotate(rot, expand=True, resample=Image.BICUBIC)
+        im.paste(tk, (x0, y0), tk)
+    d.rounded_rectangle((290, 1345, 790, 1440), 30, fill=AMBER)
+    ctext(d, 1362, "Rendición: HOY", font("Black", 50), BG, 290, 790)
+    stamp(d, t)
+
+
+ROWS11 = [("02/11", "Café Roma", "Comida", "4.800", False), ("03/11", "Taxi", "Transporte", "9.200", False),
+          ("05/11", "Librería Sur", "Oficina", "3.150", False), ("06/11", "¿?", "—", "¿2.500?", True),
+          ("09/11", "Almuerzo cliente", "Comida", "12.400", False), ("12/11", "Peaje", "Transporte", "1.900", False),
+          ("14/11", "¿?", "—", "¿1.700?", True)]
+
+
+def p11s3(im, d, t):
+    d.text((90, 330), "Tu planilla", font=font("Black", 60), fill=WHITE)
+    card(d, (40, 430, 1040, 1190), fill=(255, 255, 255), outline=(200, 205, 215), r=24)
+    cols = [("Fecha", 60, 210), ("Comercio", 210, 520), ("Rubro", 520, 780), ("Monto", 780, 1020)]
+    for name, a, b in cols:
+        ctext(d, 455, name, font("ExtraBold", 32), (90, 100, 120), a, b)
+    d.line((60, 510, 1020, 510), fill=(210, 215, 225), width=3)
+    show_marks = prog(t, DURS[2] * 0.55, 0.3)
+    for i, (fe, co, ru, mo, bad) in enumerate(ROWS11):
+        p = prog(t, 0.15 + i * DURS[2] * 0.06, 0.25)
+        if p <= 0:
+            continue
+        yy = 525 + i * 80
+        if bad and show_marks > 0:
+            d.rectangle((50, yy - 6, 1030, yy + 66), fill=mix((255, 243, 196), show_marks))
+        c = mix((40, 50, 70), p)
+        ctext(d, yy + 10, fe, font("Medium", 32), c, 60, 210)
+        ctext(d, yy + 10, co, font("Bold", 32), c, 210, 520)
+        ctext(d, yy + 10, ru, font("Medium", 32), c, 520, 780)
+        ctext(d, yy + 10, "$ " + mo, font("Bold", 32), c, 780, 1020)
+    pt = prog(t, 0.15 + 7 * DURS[2] * 0.06, 0.3)
+    if pt > 0:
+        ctext(d, 1095, "… 23 tickets", font("Medium", 32), mix((120, 130, 150), pt), 60, 520)
+        d.rounded_rectangle((540, 1080, 1020, 1170), 20, fill=mix((34, 197, 94), pt))
+        ctext(d, 1098, "TOTAL $ 87.450", font("Black", 44), mix(WHITE, pt), 540, 1020)
+    if show_marks > 0:
+        card(d, (40, 1230, 1040, 1420), fill=mix(CARD, show_marks), outline=mix(AMBER, show_marks), r=22, width=3)
+        d.text((80, 1255), "A revisar: 2 tickets borrosos", font=font("ExtraBold", 40), fill=mix(AMBER, show_marks))
+        d.text((80, 1320), "Mirá solo esos contra la foto", font=font("Medium", 36), fill=mix(WHITE, show_marks))
+
+
+P11_PROMPT = ("Te paso las fotos de mis tickets. Armá una planilla con fecha, comercio, rubro y monto, y sumá el total. "
+              "Si un ticket no se lee bien, no adivines: marcalo como 'a revisar'.")
+
 
 PARTS = {
+    11: [p11s1, chat_scene("Le pasás las fotos", "Armame la rendición de gastos de noviembre con estos tickets.", "23 fotos"), p11s3, prompt_scene(P11_PROMPT), s5],
     10: [p10s1, chat_scene("Le subís el PDF", "Resumime este informe en una carilla para mi jefe, que tiene que decidir si renueva el proveedor.", "Adjunto: informe.pdf"), p10s3, prompt_scene(P10_PROMPT), s5],
     "radar": [r1, r2, r3, r4, r5],
     9: [p9s1, chat_scene("Le pasás la lista", "Armame el presupuesto con este pedido: 6 sillas, 3 escritorios, 6 lámparas, 2 archiveros y un monitor.", "Adjunto: precios.xlsx"), p9s3, prompt_scene(P9_PROMPT), s5],
