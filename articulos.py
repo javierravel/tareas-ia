@@ -565,7 +565,7 @@ ARTICULOS = [
 "titulo": "Cómo resumir un PDF largo con IA: 80 páginas en una carilla",
 "corto": "Resumir un PDF largo",
 "desc": "Subí el PDF a la IA y pedile un resumen de una carilla con las decisiones, los números y lo que te toca a vos. Con el prompt para copiar y cómo chequear que no invente.",
-"video": "Z9tomnpx1QE",
+"video": "jv9PWLL8h_s",
 "fecha": "2026-11-26",
 "cuerpo": """
 <p>Te mandan un informe de 80 páginas y te piden "una opinión para mañana". Leerlo entero te lleva la tarde. La IA lo lee en un minuto y te deja una carilla con lo que importa, y vos usás tu tiempo en pensar, no en subrayar.</p>
@@ -597,7 +597,7 @@ ARTICULOS = [
 <li><b>Subir documentos confidenciales sin preguntar.</b> Si es un contrato o datos de personas, fijate primero qué permite tu empresa.</li>
 </ul>
 
-<p>En este video te muestro una tarea parecida: resumir 40 mails en 5 renglones. El método es el mismo.</p>
+<p>En este video te lo muestro en 25 segundos: el informe de 80 páginas, la carilla que te devuelve y el truco de pedirle la página de cada dato.</p>
 """,
 "prompt": "Te adjunto un PDF de [N] páginas. Resumilo en una carilla para [quién lo va a leer], que tiene que decidir [qué decisión]. Incluí: de qué se trata en 3 renglones, las decisiones y fechas importantes, los números clave y qué nos toca hacer a nosotros. Al lado de cada dato poné la página. Si algo no está en el documento, no lo inventes: decime que no aparece.",
 "faq": [
