@@ -835,4 +835,49 @@ ARTICULOS = [
 ("¿Sirve con Google Sheets?", "Sí: descargá la hoja como Excel o CSV (Archivo → Descargar) y subí ese archivo."),
 ],
 },
+{
+"slug": "radar-de-videos-virales-con-ia",
+"num": 20,
+"titulo": "Cómo armar un radar de videos virales con IA (que trabaja de madrugada)",
+"corto": "Radar de videos virales de tu nicho",
+"desc": "Una tarea programada que revisa a los creadores que seguís, se queda con los videos que hicieron más de 3 veces su promedio y te deja el gancho, la estructura y por qué pegaron.",
+"video": None,
+"fecha": "2026-11-27",
+"cuerpo": """
+<p>Si hacés videos, mirar todos los días qué está funcionando en tu nicho te come una hora. Yo tengo una tarea programada que lo hace sola antes de las 4 de la mañana: revisa a los creadores que sigo y me deja un reporte. Esta semana encontró un video que hizo 713 veces el promedio de su creador.</p>
+
+<h2>Qué hace el radar</h2>
+<ul>
+<li>Revisa los últimos videos de una lista de cuentas que vos elegís.</li>
+<li>Compara las vistas de cada video con el promedio (la mediana) de ese creador.</li>
+<li>Se queda solo con los que hicieron 3 veces o más su promedio (y un mínimo de vistas, para no perseguir ruido).</li>
+<li>De cada uno anota la primera frase literal, la estructura en 5 pasos, por qué cree que funcionó y una idea para tu canal.</li>
+</ul>
+
+<h2>Paso a paso</h2>
+<ol>
+<li>Hacé la lista: 10 a 20 cuentas de tu nicho, en una sola red para empezar.</li>
+<li>Elegí la hora. De madrugada está bien: a la mañana ya tenés el reporte.</li>
+<li>Usá el prompt de abajo en una tarea programada (en Claude, \"Scheduled tasks\"; también sirve cualquier herramienta que corra un prompt todos los días).</li>
+<li>Leé el reporte y quedate con una idea por día. Una sola.</li>
+</ol>
+
+{prompt}
+
+<h2>El truco: comparar contra el promedio del creador, no contra las vistas</h2>
+<p>Un video con 50.000 vistas de una cuenta que siempre hace 50.000 no te dice nada. Uno con 20.000 de una cuenta que hace 2.000 sí: ese formato funcionó por algo. Por eso el filtro es \"3 veces su promedio\" y no \"más de X vistas\".</p>
+
+<h2>Errores comunes</h2>
+<ul>
+<li><b>Copiar el video.</b> El radar sirve para entender el formato (el gancho, el ritmo, el cierre). Los personajes, los textos y las ideas de otros no se copian: lo contás con tus datos.</li>
+<li><b>Seguir demasiadas cuentas.</b> Con 50 cuentas el reporte se vuelve largo y no lo leés. Empezá con pocas.</li>
+<li><b>Creerle todos los números.</b> Si algo te sorprende, abrí el video y chequealo antes de usarlo.</li>
+</ul>
+""",
+"prompt": "Todos los días a las [HORA], revisá los últimos videos de estas cuentas: [LISTA]. Decime cuáles hicieron más de 3 veces su promedio de vistas y, de cada uno, la primera frase, la estructura en 5 pasos y por qué creés que funcionó.",
+"faq": [
+("¿Necesito programar?", "No. Es un prompt en una tarea programada. Si la herramienta no puede entrar a una red social, pegale vos los links de la semana y pedile el mismo análisis."),
+("¿Cada cuánto conviene correrlo?", "Una vez por día alcanza. Más seguido solo te trae los mismos videos."),
+],
+},
 ]
