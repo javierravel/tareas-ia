@@ -6,48 +6,86 @@
 <title>Cómo escribir un mail en inglés formal sin saber inglés (con IA) | Javi Automates</title>
 <meta name="description" content="Escribilo en castellano como te salga y la IA te lo pasa a inglés formal, listo para mandar, con la explicación de cada párrafo para que sepas qué mandás.">
 <meta name="google-site-verification" content="j29_lUV5cW3bUKpwCXkFWc7-2CDuGl0R0aA49vF_pfM">
+<meta name="theme-color" content="#f5f1e8">
 <link rel="canonical" href="https://javierravel.github.io/tareas-ia/mail-en-ingles-formal-con-ia.html">
 <meta property="og:title" content="Cómo escribir un mail en inglés formal sin saber inglés (con IA) | Javi Automates">
 <meta property="og:description" content="Escribilo en castellano como te salga y la IA te lo pasa a inglés formal, listo para mandar, con la explicación de cada párrafo para que sepas qué mandás.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://javierravel.github.io/tareas-ia/mail-en-ingles-formal-con-ia.html">
+<link rel="preload" href="fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/source-serif-4.woff2" as="font" type="font/woff2" crossorigin>
+<script>document.documentElement.className='js'</script>
 <style>
-:root{--bg:#0f1420;--card:#171e2e;--ink:#e9edf5;--muted:#9aa6bd;--amber:#f5b82e;--green:#3ddc97;--line:#26304a}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif}
-a{color:var(--amber)}a:hover{text-decoration:none}
-.wrap{max-width:760px;margin:0 auto;padding:0 20px}
-header{border-bottom:1px solid var(--line)}
-header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
-.logo{font-weight:800;color:var(--ink);text-decoration:none;font-size:20px}.logo span{color:var(--amber)}
-nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-size:16px}nav a:hover{color:var(--ink)}
-h1{font-size:clamp(28px,5vw,40px);line-height:1.2;margin:36px 0 12px}
-h2{font-size:24px;margin:40px 0 10px}
-.lead{color:var(--muted);font-size:19px;margin:0 0 24px}
-.tag{display:inline-block;background:#26304a;color:var(--amber);font-weight:700;font-size:14px;padding:4px 10px;border-radius:99px;margin-top:28px}
-li{margin:6px 0}code{background:#222b40;padding:2px 6px;border-radius:6px;font-size:.9em}
-.cta{background:linear-gradient(135deg,#1d2640,#20203a);border:1px solid #3a4466;border-radius:16px;padding:22px 24px;margin:28px 0}
-.cta b{display:block;font-size:20px;margin-bottom:4px}.cta p{margin:0 0 14px;color:var(--muted)}
-.btn{display:inline-block;background:var(--amber);color:#1a1300;font-weight:800;padding:12px 20px;border-radius:12px;text-decoration:none}
-.btn:hover{filter:brightness(1.08)}
-.prompt{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:12px;padding:18px 20px;margin:24px 0}
-.prompt .h{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
-.prompt .h b{color:var(--amber)}.prompt p{margin:0;font-family:ui-monospace,Menlo,monospace;font-size:16px;line-height:1.6}
-.copy{background:#26304a;color:var(--ink);border:0;border-radius:8px;padding:6px 12px;font-weight:700;cursor:pointer;font-size:14px}
-.video{position:relative;width:100%;max-width:340px;aspect-ratio:9/16;margin:24px auto;border-radius:16px;overflow:hidden;background:#000}
+@font-face{font-family:Archivo;src:url(fonts/archivo.woff2) format("woff2");font-weight:100 900;font-display:swap}
+@font-face{font-family:"Source Serif 4";src:url(fonts/source-serif-4.woff2) format("woff2");font-weight:200 900;font-display:swap}
+@font-face{font-family:"Source Serif 4";src:url(fonts/source-serif-4-italic.woff2) format("woff2");font-weight:200 900;font-style:italic;font-display:swap}
+:root{--paper:#f5f1e8;--sheet:#fcfaf5;--ink:#1d1b16;--muted:#5a5448;--line:#d6cfbf;--blue:#1b3fa0;--hl:#ffd84a;--tint:#ebe5d6;
+--sans:Archivo,"Helvetica Neue",Arial,sans-serif;--serif:"Source Serif 4",Georgia,serif;--mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+--ease:cubic-bezier(.23,1,.32,1)}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%;scrollbar-color:var(--ink) var(--paper)}
+body{margin:0;background:var(--paper);color:var(--ink);font:1.125rem/1.62 var(--serif);font-optical-sizing:auto;caret-color:var(--blue)}
+::selection{background:var(--hl);color:var(--ink)}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:2px}
+a{color:var(--blue);text-decoration-thickness:1px;text-underline-offset:.18em}a:hover{text-decoration-thickness:2px}
+.wrap{max-width:44rem;margin:0 auto;padding:0 1.25rem}
+header{border-bottom:2px solid var(--ink)}
+header .wrap{display:flex;align-items:baseline;justify-content:space-between;gap:.5rem 1.25rem;flex-wrap:wrap;padding-top:1.1rem;padding-bottom:.9rem}
+.logo{font:800 1.3rem/1 var(--sans);letter-spacing:-.02em;color:var(--ink);text-decoration:none}
+.logo span{background:var(--hl);padding:.1em .22em;margin-left:.08em}
+nav{display:flex;gap:1.25rem;font:500 .95rem/1 var(--sans)}
+nav a{color:var(--ink);text-decoration:none;padding:.3rem 0;border-bottom:2px solid transparent;transition:border-color 160ms var(--ease)}nav a:hover{border-bottom-color:var(--ink)}
+.donde{display:flex;justify-content:space-between;gap:1rem;font:500 .9rem/1.3 var(--sans);color:var(--muted);padding:.8rem 0;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+.donde a{color:var(--muted);text-decoration:none}.donde a:hover{color:var(--ink)}
+h1,h2,h3{font-family:var(--sans);text-wrap:balance}
+h1{font-weight:800;font-size:clamp(2rem,6vw,3.1rem);line-height:1.06;letter-spacing:-.028em;margin:2.5rem 0 1rem}
+h2{font-weight:700;font-size:1.5rem;line-height:1.2;letter-spacing:-.015em;margin:2.9rem 0 .7rem}
+p{margin:0 0 1.1rem;max-width:68ch}
+.lead{font-size:1.28rem;line-height:1.5;color:var(--muted);margin:0 0 1.8rem}
+strong{font-weight:600;padding:0 .12em;background:linear-gradient(transparent 58%,var(--hl) 58%) no-repeat 0 0/100% 100%}
+.js main strong{background-size:0% 100%;transition:background-size 280ms var(--ease)}.js main strong.in{background-size:100% 100%}
+ul,ol{padding-left:1.4rem;margin:0 0 1.2rem;max-width:68ch}li{margin:.45rem 0;padding-left:.2rem}
+ol>li::marker{font:700 .95em var(--sans);font-variant-numeric:tabular-nums}ul>li::marker{color:var(--muted)}
+code{font:.86em var(--mono);background:var(--tint);padding:.12em .36em;border-radius:3px}
+.btn{display:inline-block;background:var(--ink);color:var(--paper);font:700 1rem/1 var(--sans);padding:.85rem 1.15rem;border-radius:4px;text-decoration:none;transition:background-color 160ms var(--ease),transform 160ms var(--ease)}
+.btn:hover{background:var(--blue)}.btn:active{transform:scale(.97)}
+.cta{background:var(--hl);border-radius:4px;padding:1.6rem 1.5rem;margin:2.6rem 0}
+.cta b{display:block;font:800 1.45rem/1.15 var(--sans);letter-spacing:-.02em;margin-bottom:.45rem;text-wrap:balance}.cta p{margin:0 0 1.1rem}
+.cta.slim{background:var(--sheet);border:1px solid var(--ink);padding:.95rem 1.1rem;margin:0 0 2.2rem;display:flex;align-items:center;justify-content:space-between;gap:.8rem 1.25rem;flex-wrap:wrap}
+.cta.slim b{font-size:1.02rem;font-weight:700;letter-spacing:0;margin:0;flex:1 1 16rem}
+.cta.slim .btn{font-size:.92rem;padding:.65rem .9rem;white-space:nowrap}
+.prompt{background:var(--sheet);border:1px solid var(--ink);border-radius:4px;margin:1.8rem 0 .8rem;box-shadow:0 1px 2px rgba(29,27,22,.06),0 14px 28px -18px rgba(29,27,22,.35)}
+.prompt .h{display:flex;justify-content:space-between;align-items:center;padding:.6rem .7rem .6rem 1.1rem;border-bottom:1px solid var(--line)}
+.prompt .h b{font:700 .95rem/1 var(--sans)}
+.prompt p{margin:0;padding:1rem 1.1rem 1.15rem;font:.95rem/1.6 var(--mono);max-width:none;overflow-wrap:anywhere}
+.copy{font:600 .88rem/1 var(--sans);color:var(--ink);background:transparent;border:1px solid var(--ink);border-radius:4px;padding:.5rem .8rem;cursor:pointer;transition:background-color 160ms var(--ease),transform 160ms var(--ease)}
+.copy:hover{background:var(--tint)}.copy:active{transform:scale(.97)}.copy.ok{background:var(--hl)}
+.video{position:relative;width:100%;max-width:340px;aspect-ratio:9/16;margin:1.5rem 0;border:1px solid var(--ink);border-radius:6px;overflow:hidden;background:#000}
 .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.faq details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:10px 0}
-.faq summary{font-weight:700;cursor:pointer}.faq p{margin:10px 0 0;color:var(--muted)}
-.nextprev{display:flex;gap:12px;justify-content:space-between;margin:40px 0;flex-wrap:wrap}
-.nextprev a{flex:1;min-width:220px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;text-decoration:none;color:var(--ink)}
-.nextprev small{display:block;color:var(--muted)}
-.cards{display:grid;gap:14px;margin:28px 0}
-.card{display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;text-decoration:none;color:var(--ink)}
-.card:hover{border-color:var(--amber)}.card small{color:var(--amber);font-weight:700}.card h3{margin:4px 0;font-size:20px}.card p{margin:0;color:var(--muted);font-size:16px}
-footer{border-top:1px solid var(--line);margin-top:60px;padding:28px 0;color:var(--muted);font-size:15px}
-footer a{color:var(--muted)}
-.autor{display:flex;gap:14px;align-items:center;background:var(--card);border-radius:14px;padding:16px 18px;margin:36px 0;color:var(--muted);font-size:16px}
-.autor b{color:var(--ink)}
+.faq{border-bottom:1px solid var(--line)}
+.faq details{border-top:1px solid var(--line);padding:.95rem 0}
+.faq summary{font:600 1.05rem/1.35 var(--sans);cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:1rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-weight:400;font-size:1.3rem;line-height:1;transition:transform 200ms var(--ease)}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq p{margin:.7rem 0 0;color:var(--muted)}
+.autor{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:1.2rem 0;margin:2.6rem 0;color:var(--muted);font-size:1.02rem}
+.autor b{color:var(--ink);font-family:var(--sans)}
+.nextprev{display:flex;gap:1.5rem;justify-content:space-between;margin:2.6rem 0;flex-wrap:wrap}
+.nextprev a{flex:1;min-width:13rem;border-top:2px solid var(--ink);padding-top:.7rem;text-decoration:none;color:var(--ink);font:700 1.1rem/1.25 var(--sans)}
+.nextprev a:hover{color:var(--blue)}
+.nextprev small{display:block;font-weight:500;font-size:.88rem;color:var(--muted);margin-bottom:.25rem;font-variant-numeric:tabular-nums}
+.indice{list-style:none;padding:0;margin:0;max-width:none;border-bottom:2px solid var(--ink)}
+.indice li{margin:0;padding:0;border-top:1px solid var(--line)}.indice li:first-child{border-top:2px solid var(--ink)}
+.indice a{display:grid;grid-template-columns:3.2rem 1fr;gap:0 .6rem;padding:1.15rem 0;text-decoration:none;color:var(--ink)}
+.indice .n{font:800 1.9rem/1 var(--sans);letter-spacing:-.03em;color:var(--muted);font-variant-numeric:tabular-nums;transition:color 160ms var(--ease)}
+.indice h3{margin:0 0 .3rem;font-weight:700;font-size:1.28rem;line-height:1.2;letter-spacing:-.012em}
+.indice h3 span{background:linear-gradient(var(--hl),var(--hl)) no-repeat 0 88%/0% .42em;transition:background-size 240ms var(--ease)}
+.indice a:hover .n{color:var(--ink)}.indice a:hover h3 span{background-size:100% .42em}
+.indice p{margin:0;color:var(--muted);font-size:1.02rem;line-height:1.5}
+footer{border-top:2px solid var(--ink);margin-top:4rem;padding:1.6rem 0 2.2rem;color:var(--muted);font:500 .92rem/1.6 var(--sans)}
+footer p{margin:0 0 .3rem}footer a{color:var(--muted)}footer a:hover{color:var(--ink)}
+@media (max-width:30rem){body{font-size:1.06rem}nav{gap:1rem;font-size:.9rem}.indice a{grid-template-columns:2.5rem 1fr}.indice .n{font-size:1.5rem}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}.js main strong{background-size:100% 100%}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Article", "headline": "Cómo escribir un mail en inglés formal sin saber inglés (con IA)", "description": "Escribilo en castellano como te salga y la IA te lo pasa a inglés formal, listo para mandar, con la explicación de cada párrafo para que sepas qué mandás.", "inLanguage": "es", "author": {"@type": "Person", "name": "Javier Ravel", "url": "https://www.youtube.com/@javiautomates"}, "datePublished": "2026-11-26", "mainEntityOfPage": "https://javierravel.github.io/tareas-ia/mail-en-ingles-formal-con-ia.html"}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Y para contestar un mail en inglés?", "acceptedAnswer": {"@type": "Answer", "text": "Pegá el mail que recibiste y pedile: 'explicámelo en castellano y ayudame a contestar'."}}, {"@type": "Question", "name": "¿Funciona para otros idiomas?", "acceptedAnswer": {"@type": "Answer", "text": "Sí: cambiá 'inglés' por el idioma que necesites."}}]}]}</script>
 </head>
@@ -55,11 +93,10 @@ footer a{color:var(--muted)}
 <header><div class="wrap"><a class="logo" href="index.html">Javi <span>Automates</span></a>
 <nav><a href="index.html">Tareas</a><a href="sobre.html">Sobre mí</a><a href="https://javiautomates.gumroad.com/l/guia-gratis">Guía gratis</a></nav></div></header>
 <main class="wrap">
-<span class="tag">Tarea de oficina #11</span>
+<div class="donde"><span>Tarea 11 de 19</span><a href="index.html">Todas las tareas</a></div>
 <h1>Cómo escribir un mail en inglés formal sin saber inglés (con IA)</h1>
 <p class="lead">Escribilo en castellano como te salga y la IA te lo pasa a inglés formal, listo para mandar, con la explicación de cada párrafo para que sepas qué mandás.</p>
-<div class="cta"><b>🎁 Guía gratis: 10 tareas de oficina que la IA te hace sola</b>
-<p>Esta es una de las tareas. Las otras 9, con su prompt y el truco de cada una, en un PDF gratis.</p>
+<div class="cta slim"><b>Guía gratis: 10 tareas de oficina que la IA te hace sola</b>
 <a class="btn" href="https://javiautomates.gumroad.com/l/guia-gratis">Quiero la guía gratis</a></div>
 
 <p>Te piden un mail para alguien de afuera y tu inglés es el del colegio. Los traductores automáticos traducen palabra por palabra y el resultado suena raro. La IA hace otra cosa: reescribe el mensaje como lo escribiría alguien que trabaja en inglés.</p>
@@ -80,7 +117,7 @@ footer a{color:var(--muted)}
 
 <div class="prompt"><div class="h"><b>El prompt</b><button class="copy">Copiar</button></div>
 <p>Pasá este mail a inglés formal, listo para mandar: [TU TEXTO EN CASTELLANO]. Después explicame en castellano qué dice cada párrafo.</p></div>
-<p style="color:var(--muted);font-size:16px">Cambiá lo que está entre [corchetes] por tus datos.</p>
+<p style="color:var(--muted);font-size:1rem">Cambiá lo que está entre [corchetes] por tus datos.</p>
 
 <h2>El truco: que te lo explique</h2>
 <p>Mandar algo que no entendés es arriesgado. Por eso el prompt pide la explicación de cada párrafo: si algo dice más (o menos) de lo que querías, lo ves antes de mandarlo.</p>
@@ -98,13 +135,15 @@ footer a{color:var(--muted)}
 <div class="cta"><b>¿Te sirvió? Hay 9 tareas más.</b>
 <p>Bajate la guía gratis: 8 tareas con Claude y 2 automatizaciones con n8n, cada una con su prompt listo para copiar.</p>
 <a class="btn" href="https://javiautomates.gumroad.com/l/guia-gratis">Descargar la guía gratis</a></div>
-<div class="autor"><div>✍️</div><div><b>Javier Ravel</b> — trabajo en IT en una universidad y uso IA todos los días para ahorrarme tareas repetitivas. En <a href="https://www.youtube.com/@javiautomates">Javi Automates</a> muestro cómo, sin programar.</div></div>
+<p class="autor"><b>Javier Ravel</b> — trabajo en IT en una universidad y uso IA todos los días para ahorrarme tareas repetitivas. En <a href="https://www.youtube.com/@javiautomates">Javi Automates</a> muestro cómo, sin programar.</p>
 <div class="nextprev"><a href="nota-de-voz-a-mail-con-ia.html"><small>← Tarea #10</small>Nota de voz → mail</a><a href="planificar-la-semana-con-ia.html" style="text-align:right"><small>Tarea #12 →</small>Planificar la semana</a></div>
 </main>
 <footer><div class="wrap">
 <p>Javi Automates · IA sin código que te ahorra horas en la oficina.</p>
 <p><a href="https://www.youtube.com/@javiautomates">YouTube</a> · <a href="https://javiautomates.gumroad.com/l/guia-gratis">Guía gratis</a> · <a href="sobre.html">Sobre mí</a> · <a href="privacidad.html">Privacidad</a></p>
 </div></footer>
-<script>document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',()=>{const t=b.closest('.prompt').querySelector('p').innerText;navigator.clipboard.writeText(t).then(()=>{b.textContent='¡Copiado!';setTimeout(()=>b.textContent='Copiar',1500)})}))</script>
+<script>document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',()=>{const t=b.closest('.prompt').querySelector('p').innerText;navigator.clipboard.writeText(t).then(()=>{b.textContent='¡Copiado!';b.classList.add('ok');setTimeout(()=>{b.textContent='Copiar';b.classList.remove('ok')},1500)})}));
+(()=>{const s=document.querySelectorAll('main strong');if(!('IntersectionObserver' in window)){s.forEach(e=>e.classList.add('in'));return}
+const o=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');o.unobserve(e.target)}}),{rootMargin:'0px 0px -12% 0px'});s.forEach(e=>o.observe(e))})()</script>
 </body>
 </html>
