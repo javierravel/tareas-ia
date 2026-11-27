@@ -841,7 +841,7 @@ ARTICULOS = [
 "titulo": "Cómo armar un radar de videos virales con IA (que trabaja de madrugada)",
 "corto": "Radar de videos virales de tu nicho",
 "desc": "Una tarea programada que revisa a los creadores que seguís, se queda con los videos que hicieron más de 3 veces su promedio y te deja el gancho, la estructura y por qué pegaron.",
-"video": None,
+"video": "jhnApROIre8",
 "fecha": "2026-11-27",
 "cuerpo": """
 <p>Si hacés videos, mirar todos los días qué está funcionando en tu nicho te come una hora. Yo tengo una tarea programada que lo hace sola antes de las 4 de la mañana: revisa a los creadores que sigo y me deja un reporte. Esta semana encontró un video que hizo 713 veces el promedio de su creador.</p>
