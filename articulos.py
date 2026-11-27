@@ -611,7 +611,7 @@ ARTICULOS = [
 "titulo": "Planilla de gastos desde fotos de tickets con IA (sin tipear nada)",
 "corto": "Gastos desde tickets",
 "desc": "Sacale foto a los tickets y la IA te arma la tabla de gastos con fecha, comercio, categoría e importe, lista para pegar en Excel o Google Sheets. Prompt para copiar.",
-"video": "qjGrpYJdLw8",
+"video": "PZ49-3K7LLs",
 "fecha": "2026-11-26",
 "cuerpo": """
 <p>Fin de mes, rendición de gastos, y una pila de tickets arrugados en el cajón. Tipearlos uno por uno es la tarea más aburrida de la oficina. Con la IA alcanza con sacarles foto.</p>
