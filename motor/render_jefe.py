@@ -789,7 +789,109 @@ P9_PROMPT = ("Te paso mi lista de precios y el pedido del cliente. Armá el pres
              "y el total. Usá solo lo que está en la lista: si algo no está, no inventes, ponelo aparte en 'a confirmar'.")
 
 
+# ---------- Short suelto: "Mi IA encontró un video 713 veces viral" (27/11) ----------
+
+def r1(im, d, t):
+    worker_card(d, t, 330, "RADAR", "03:47", (96, 165, 250))
+    p = prog(t, 0.4, 0.35)
+    card(d, (60, 620, 1020, 1330), fill=(255, 255, 255), outline=(210, 215, 225), r=30)
+    d.text((110, 655), "Reporte de esta madrugada", font=font("Bold", 44), fill=(110, 120, 140))
+    d.line((110, 730, 970, 730), fill=(225, 228, 235), width=3)
+    d.text((110, 770), "1 video encontrado", font=font("Black", 56), fill=mix((30, 40, 60), p))
+    n = int(469900 * prog(t, 0.6, DURS[0] * 0.45))
+    d.text((110, 870), f"{n:,}".replace(",", ".") + " vistas", font=font("Black", 74), fill=mix((30, 40, 60), p))
+    p2 = prog(t, DURS[0] * 0.55, 0.35)
+    if p2 > 0:
+        s = 1 + 0.25 * (1 - p2)
+        f = font("Black", int(190 * s))
+        d.rounded_rectangle((110, 1010, 970, 1290), 40, fill=mix(RED, p2))
+        ctext(d, 1030, "×713", f, mix(WHITE, p2), 110, 970)
+    stamp(d, t)
+
+
+R2 = [("Video A", "×713", True), ("Video B", "×35", True), ("Video C", "×2,1", False), ("Video D", "×1,4", False), ("Video E", "×0,9", False)]
+
+
+def r2(im, d, t):
+    ctext(d, 330, "LOS CREADORES QUE SIGO", font("Black", 60), WHITE)
+    d.rounded_rectangle((190, 425, 890, 520), 30, fill=YEL)
+    ctext(d, 443, "Filtro: ≥ 3× su promedio", font("Black", 50), BG, 190, 890)
+    for i, (name, x, ok) in enumerate(R2):
+        p = prog(t, 0.2 + i * DURS[1] * 0.1, 0.25)
+        if p <= 0:
+            continue
+        y = 570 + i * 160
+        card(d, (60, y, 1020, y + 135), fill=mix((255, 255, 255), p), outline=mix((210, 215, 225), p), r=22)
+        d.rounded_rectangle((90, y + 25, 200, y + 110), 14, fill=mix((40, 50, 70), p))
+        d.polygon([(130, y + 45), (130, y + 90), (170, y + 67)], fill=mix(WHITE, p))
+        d.text((230, y + 35), name, font=font("Bold", 50), fill=mix((30, 40, 60), p))
+        d.text((560, y + 30), x, font=font("Black", 62), fill=mix(RED if ok else (150, 155, 165), p))
+        pc = prog(t, DURS[1] * 0.6, 0.3)
+        if ok and pc > 0:
+            d.text((870, y + 25), "✓", font=font("Black", 76), fill=mix((34, 160, 90), pc))
+        elif not ok and pc > 0:
+            d.line((90, y + 68, 90 + 900 * pc, y + 68), fill=RED, width=10)
+
+
+R3 = ["Gancho: la primera frase, literal", "Estructura: los 5 pasos del video", "Por qué pegó", "Idea para mi canal"]
+
+
+def r3(im, d, t):
+    ctext(d, 330, "LO BAJA Y LO TRANSCRIBE", font("Black", 60), WHITE)
+    card(d, (60, 450, 1020, 1350), fill=(255, 255, 255), outline=(210, 215, 225), r=30)
+    d.text((110, 490), "radar-virales.md", font=font("Black", 50), fill=(30, 40, 60))
+    d.text((110, 560), "27/11 · 03:47", font=font("Medium", 40), fill=(110, 120, 140))
+    d.line((110, 625, 970, 625), fill=(225, 228, 235), width=3)
+    for i, txt in enumerate(R3):
+        p = prog(t, 0.3 + i * DURS[2] * 0.17, 0.25)
+        if p <= 0:
+            continue
+        y = 670 + i * 165
+        head, _, rest = txt.partition(":")
+        d.text((110, y), "## " + head, font=font("Black", 52), fill=mix((205, 110, 70), p))
+        if rest:
+            d.text((140, y + 68), rest.strip(), font=font("Medium", 40), fill=mix((60, 70, 90), p))
+        else:
+            d.rounded_rectangle((140, y + 80, 140 + int(620 * p), y + 105), 10, fill=mix((220, 225, 235), p))
+
+
+def r4(im, d, t):
+    worker_card(d, t, 330, "VIRAL DEL DÍA", "21:43", (245, 181, 68))
+    steps = ["Agarra la mejor idea", "Escribe el guion", "Graba la voz y arma el video"]
+    for i, s in enumerate(steps):
+        p = prog(t, 0.2 + i * DURS[3] * 0.14, 0.25)
+        if p <= 0:
+            continue
+        y = 630 + i * 110
+        d.text((110, y), "✓", font=font("Black", 56), fill=mix(GREEN, p))
+        d.text((190, y + 6), s, font=font("Bold", 50), fill=mix(WHITE, p))
+    pr = prog(t, DURS[3] * 0.35, DURS[3] * 0.3)
+    d.rounded_rectangle((110, 990, 970, 1060), 30, fill=CARD, outline=LINE, width=3)
+    if pr > 0:
+        d.rounded_rectangle((110, 990, 110 + int(860 * pr), 1060), 30, fill=AMBER)
+    ctext(d, 1075, f"Render {int(pr * 100)}%", font("Bold", 42), MUTED)
+    p2 = prog(t, DURS[3] * 0.72, 0.3)
+    if p2 > 0:
+        d.rounded_rectangle((180, 1170, 900, 1300), 34, fill=mix(GREEN, p2))
+        ctext(d, 1195, "Yo solo apruebo ✓", font("Black", 62), mix(BG, p2), 180, 900)
+
+
+def r5(im, d, t):
+    for i, c in enumerate([(96, 165, 250), (245, 181, 68)]):
+        robot(d, 390 + i * 300, 430, 0.8, 1.0, c)
+    ctext(d, 600, "COMENTÁ", font("Black", 120), WHITE)
+    pulse = 1 + 0.05 * abs(((t * 2) % 2) - 1)
+    ctext(d, 740, "GUIA", font("Black", int(200 * pulse)), YEL)
+    ctext(d, 990, "y te mando 10 tareas más", font("Bold", 56), WHITE)
+    ctext(d, 1065, "que la IA te hace sola, gratis", font("Medium", 48), MUTED)
+    by = 1200 + int(25 * abs(((t * 1.6) % 2) - 1))
+    cx = W // 2
+    d.polygon([(cx - 60, by), (cx + 60, by), (cx, by + 80)], fill=YEL)
+
+
+
 PARTS = {
+    "radar": [r1, r2, r3, r4, r5],
     9: [p9s1, chat_scene("Le pasás la lista", "Armame el presupuesto con este pedido: 6 sillas, 3 escritorios, 6 lámparas, 2 archiveros y un monitor.", "Adjunto: precios.xlsx"), p9s3, prompt_scene(P9_PROMPT), s5],
     "sueldos": [v1, v2, v3, v4, v5],
     8: [p8s1, chat_scene("Le pasás el Excel", "Armame un gráfico de ventas por mes para la reunión.", "Adjunto: ventas.xlsx"), p8s3, prompt_scene(P8_PROMPT), s5],
