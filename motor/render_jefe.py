@@ -889,8 +889,57 @@ def r5(im, d, t):
     d.polygon([(cx - 60, by), (cx + 60, by), (cx, by + 80)], fill=YEL)
 
 
+# ---------- Parte 10: resumir un PDF de 80 páginas ----------
+
+def p10s1(im, d, t):
+    n = int(min(80, 4 + t * 26))
+    d.rounded_rectangle((220, 330, 860, 440), 40, fill=RED)
+    ctext(d, 345, f"{n} PÁGINAS", font("Black", 60), WHITE, 220, 860)
+    k = min(8, int(t * 4) + 1)
+    for i in range(k):
+        x0, y0 = 250 + i * 14, 500 + i * 14
+        d.rounded_rectangle((x0, y0, x0 + 520, y0 + 600), 16, fill=(255, 255, 255), outline=(200, 205, 215), width=3)
+    x0, y0 = 250 + (k - 1) * 14, 500 + (k - 1) * 14
+    d.text((x0 + 40, y0 + 40), "Informe anual", font=font("Black", 44), fill=(30, 40, 60))
+    d.text((x0 + 40, y0 + 100), "de proveedores", font=font("Bold", 36), fill=(110, 120, 140))
+    for j in range(9):
+        w = 440 if j % 3 else 330
+        d.rounded_rectangle((x0 + 40, y0 + 180 + j * 42, x0 + 40 + w, y0 + 198 + j * 42), 9, fill=(225, 230, 238))
+    d.text((x0 + 380, y0 + 545), f"pág. {n}", font=font("Medium", 30), fill=(140, 150, 165))
+    d.rounded_rectangle((290, 1250, 790, 1350), 30, fill=AMBER)
+    ctext(d, 1268, "Para mañana", font("Black", 50), BG, 290, 790)
+    stamp(d, t)
+
+
+P10_SUM = [("De qué se trata", "Renovar o cambiar el proveedor de limpieza", "pág. 3"),
+           ("Fecha límite", "El contrato vence el 31/01", "pág. 12"),
+           ("Número clave", "El nuevo cotiza 18 % menos", "pág. 34"),
+           ("Lo que te toca", "Pedir 2 referencias antes del viernes", "pág. 71")]
+
+
+def p10s3(im, d, t):
+    d.text((90, 330), "Tu carilla", font=font("Black", 60), fill=WHITE)
+    card(d, (60, 430, 1020, 1390), fill=(255, 255, 255), outline=(200, 205, 215), r=24)
+    for i, (head, txt, pg) in enumerate(P10_SUM):
+        p = prog(t, 0.15 + i * DURS[2] * 0.12, 0.3)
+        if p <= 0:
+            continue
+        yy = 470 + i * 225
+        d.text((110, yy), head.upper(), font=font("ExtraBold", 32), fill=mix((205, 110, 70), p))
+        for j, ln in enumerate(wrap(d, txt, font("Bold", 42), 640)):
+            d.text((110, yy + 50 + j * 54), ln, font=font("Bold", 42), fill=mix((30, 40, 60), p))
+        d.rounded_rectangle((800, yy - 6, 990, yy + 48), 20, fill=mix((255, 243, 196), p))
+        ctext(d, yy + 2, pg, font("Bold", 32), mix((120, 90, 0), p), 800, 990)
+        if i < len(P10_SUM) - 1:
+            d.line((110, yy + 195, 970, yy + 195), fill=mix((230, 233, 240), p), width=2)
+
+
+P10_PROMPT = ("Resumí este PDF en una carilla para [quién lo lee], que tiene que decidir [qué]. Incluí las fechas, "
+              "los números clave y lo que me toca hacer. Al lado de cada dato poné la página. Si algo no está, no lo inventes.")
+
 
 PARTS = {
+    10: [p10s1, chat_scene("Le subís el PDF", "Resumime este informe en una carilla para mi jefe, que tiene que decidir si renueva el proveedor.", "Adjunto: informe.pdf"), p10s3, prompt_scene(P10_PROMPT), s5],
     "radar": [r1, r2, r3, r4, r5],
     9: [p9s1, chat_scene("Le pasás la lista", "Armame el presupuesto con este pedido: 6 sillas, 3 escritorios, 6 lámparas, 2 archiveros y un monitor.", "Adjunto: precios.xlsx"), p9s3, prompt_scene(P9_PROMPT), s5],
     "sueldos": [v1, v2, v3, v4, v5],
